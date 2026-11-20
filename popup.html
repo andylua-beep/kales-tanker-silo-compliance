@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tanker &amp; Bulker Semi-Trailer Road Compliance Checker | KALES</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="popup-mode">
+  <div class="popup-shell">
+    <header class="popup-header">
+      <div>
+        <div class="brand-kicker">KALES SEMI-TRAILER COMPLIANCE</div>
+        <h1>Tanker &amp; Bulker Law Check</h1>
+      </div>
+      <div class="popup-actions">
+        <button id="btnOpenFullTab" class="btn-primary" type="button" title="Open full semi-trailer compliance checker &amp; schematic">Full check ↗</button>
+      </div>
+    </header>
+
+    <form id="quickForm" autocomplete="off">
+      <label class="field">
+        <span>Market</span>
+        <select id="quickRegion"></select>
+      </label>
+
+      <div class="row-2">
+        <label class="field">
+          <span>Tanker / silo model</span>
+          <select id="quickModel"></select>
+        </label>
+        <label class="field">
+          <span>Medium</span>
+          <select id="quickMedium"></select>
+        </label>
+      </div>
+
+      <div class="row-2">
+        <label class="field">
+          <span>Suspension</span>
+          <select id="quickSuspension"></select>
+        </label>
+        <label class="field">
+          <span>Axles</span>
+          <input type="number" id="quickAxles" step="1" inputmode="numeric" />
+          <small class="hint" id="quickAxlesHint"></small>
+        </label>
+      </div>
+
+      <label class="field">
+        <span>Tyres</span>
+        <select id="quickTyre"></select>
+      </label>
+
+      <label class="field">
+        <span class="slider-top">Nominal tank volume <strong id="quickVolVal"></strong></span>
+        <input type="range" id="quickVol" min="20000" max="65000" step="1000" />
+      </label>
+    </form>
+
+    <div id="quickStatus" class="status-pill" role="status"></div>
+
+    <div class="mini-kpis">
+      <div class="mini-kpi"><span>GCW / legal limit</span><strong id="qGvw"></strong></div>
+      <div class="mini-kpi"><span>Per axle / capacity</span><strong id="qAxle"></strong></div>
+      <div class="mini-kpi"><span>Max legal payload</span><strong id="qRated"></strong></div>
+    </div>
+
+    <footer class="popup-footer">
+      <a id="quickCategoryLink" href="https://www.kalestruck.com/product-category/trailers/aluminum-tanker-trailer/?utm_source=chrome-extension&utm_medium=referral&utm_campaign=tanker" target="_blank" rel="noopener">View KALES specs ↗</a>
+      <a href="https://www.kalestruck.com/?utm_source=chrome-extension&utm_medium=referral&utm_campaign=tanker" target="_blank" rel="noopener" class="muted-link">kalestruck.com</a>
+    </footer>
+  </div>
+  <script src="popup.bundle.js"></script>
+</body>
+</html>

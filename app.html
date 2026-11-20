@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tanker &amp; Cement Bulker Semi-Trailer Compliance Checker — Road Law | KALES</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="studio">
+    <header class="studio-header">
+      <div>
+        <div class="brand-kicker">KALES SEMI-TRAILER ROAD COMPLIANCE CHECKER</div>
+        <h1>Fuel Tanker &amp; Cement Bulker Semi-Trailer Compliance Checker — Local Axle, Volume &amp; Road Laws</h1>
+      </div>
+      <div class="header-actions no-print">
+        <button id="btnSavePreset" class="btn-secondary" type="button">Save project</button>
+        <button id="btnPrintSpec" class="btn-secondary" type="button">Print spec sheet</button>
+        <a id="headerPrimaryCta" href="https://www.kalestruck.com/product-category/trailers/liquid-powder-transport/?utm_source=chrome-extension&utm_medium=referral&utm_campaign=tanker" target="_blank" rel="noopener" class="btn-primary">KALES catalog ↗</a>
+      </div>
+    </header>
+
+    <form class="controls no-print" id="configForm" autocomplete="off">
+      <section class="card">
+        <h2><span class="step">01</span> Market &amp; regulation</h2>
+        <label class="field">
+          <span>Operating market</span>
+          <select id="region" name="region"></select>
+        </label>
+        <p class="card-note" id="regionSource"></p>
+      </section>
+
+      <section class="card">
+        <h2><span class="step">02</span> Tanker &amp; Tractor</h2>
+        <div class="category-badge">Liquid &amp; Powder Transport</div>
+        <div class="chip-grid" id="modelGroup" role="group" aria-label="Tanker model"></div>
+        <label class="field">
+          <span>Tractor</span>
+          <select id="tractor" name="tractor"></select>
+        </label>
+        <label class="field">
+          <span>Tractor fifth-wheel height <em>mm</em></span>
+          <input type="number" id="fifthWheelMm" name="fifthWheelMm" step="10" inputmode="numeric" />
+          <small class="hint" id="hint-fifthWheelMm"></small>
+        </label>
+        <div class="row-2">
+          <label class="field">
+            <span>Trailer length <em>m</em></span>
+            <input type="number" id="lengthM" name="lengthM" step="0.1" inputmode="decimal" />
+            <small class="hint" id="hint-lengthM"></small>
+          </label>
+          <label class="field">
+            <span>Rear overhang <em>m</em></span>
+            <input type="number" id="rearOverhangM" name="rearOverhangM" step="0.05" inputmode="decimal" />
+            <small class="hint" id="hint-rearOverhangM"></small>
+          </label>
+        </div>
+        <label class="field">
+          <span>Chassis deck height <em>mm</em></span>
+          <input type="number" id="deckMm" name="deckMm" step="10" inputmode="numeric" />
+          <small class="hint" id="hint-deckMm"></small>
+        </label>
+      </section>
+
+      <section class="card">
+        <h2><span class="step">03</span> Running gear</h2>
+        <label class="field">
+          <span>Suspension</span>
+          <select id="suspension" name="suspension"></select>
+        </label>
+        <div class="row-2">
+          <label class="field">
+            <span>Axles</span>
+            <input type="number" id="axles" name="axles" step="1" inputmode="numeric" />
+            <small class="hint" id="hint-axles"></small>
+          </label>
+          <label class="field">
+            <span>Axle spacing <em>m</em></span>
+            <input type="number" id="spacingM" name="spacingM" step="0.01" inputmode="decimal" />
+            <small class="hint" id="hint-spacingM"></small>
+          </label>
+        </div>
+        <label class="field">
+          <span>Tyres</span>
+          <select id="tyre" name="tyre"></select>
+        </label>
+      </section>
+
+      <section class="card">
+        <h2><span class="step">04</span> Medium, shape &amp; volume</h2>
+        <div class="row-2">
+          <label class="field">
+            <span>Transported medium</span>
+            <select id="medium" name="medium"></select>
+          </label>
+          <label class="field">
+            <span>Cross-section shape</span>
+            <select id="tankShape" name="tankShape"></select>
+          </label>
+        </div>
+        <div class="row-2">
+          <label class="field">
+            <span>Tank volume <em>L</em></span>
+            <input type="number" id="volumeLiters" name="volumeLiters" step="500" inputmode="numeric" />
+            <small class="hint" id="hint-volumeLiters"></small>
+          </label>
+          <label class="field">
+            <span id="compLabel">Compartments</span>
+            <input type="number" id="compartments" name="compartments" step="1" inputmode="numeric" />
+            <small class="hint" id="hint-compartments"></small>
+          </label>
+        </div>
+        <label class="field">
+          <span>Overall height class <em>(2.8–4.2 m · hazmat 3.2–3.5 m)</em></span>
+          <select id="heightPreset" name="heightPreset"></select>
+        </label>
+        <div class="row-2">
+          <label class="field">
+            <span>Shell width <em>m</em></span>
+            <input type="number" id="tankWidthM" name="tankWidthM" step="0.02" inputmode="decimal" />
+            <small class="hint" id="hint-tankWidthM"></small>
+          </label>
+          <label class="field">
+            <span>Shell height / Ø <em>m</em></span>
+            <input type="number" id="tankHeightM" name="tankHeightM" step="0.02" inputmode="decimal" />
+            <small class="hint" id="hint-tankHeightM"></small>
+          </label>
+        </div>
+        <div class="row-2">
+          <label class="field">
+            <span>Dished head depth <em>m</em></span>
+            <input type="number" id="headDepthM" name="headDepthM" step="0.02" inputmode="decimal" />
+            <small class="hint" id="hint-headDepthM"></small>
+          </label>
+          <label class="field">
+            <span>Baffles / loss <em>%</em></span>
+            <input type="number" id="internalLossPct" name="internalLossPct" step="0.5" inputmode="decimal" />
+            <small class="hint" id="hint-internalLossPct"></small>
+          </label>
+        </div>
+        <div class="row-2">
+          <label class="field">
+            <span>Fill ratio <em>%</em></span>
+            <input type="number" id="fillPct" name="fillPct" step="1" inputmode="numeric" />
+            <small class="hint" id="hint-fillPct"></small>
+          </label>
+          <label class="field is-hidden" id="compressorField">
+            <span>Compressor <em>m³/min</em></span>
+            <input type="number" id="compressorFlow" name="compressorFlow" step="1" inputmode="numeric" />
+            <small class="hint" id="hint-compressorFlow"></small>
+          </label>
+        </div>
+      </section>
+
+    </form>
+
+    <main class="results">
+      <section id="verdict" class="verdict st-ok" aria-live="polite">
+        <h2 id="verdictTitle"></h2>
+        <p id="verdictText"></p>
+        <p class="verdict-meta" id="verdictMeta"></p>
+      </section>
+
+      <div class="svg-stage" id="svgStage"></div>
+
+      <div class="kpi-grid" id="kpis"></div>
+
+      <section class="card">
+        <h2>Checks</h2>
+        <div id="checksTables"></div>
+      </section>
+
+      <section class="card">
+        <h2>Regulation basis</h2>
+        <p><strong id="regionName"></strong> <span class="badge" id="regionBadge"></span></p>
+        <p class="card-note" id="regionSourceFull"></p>
+        <ul class="region-notes" id="regionNotes"></ul>
+        <p class="disclaimer">Static engineering estimate: equalised axle group, level liquid/powder, nominal tare and shell geometry. Each market is labelled with how its figures were sourced (official text, secondary source, not yet in force) — always confirm with the local authority and the final KALES drawing before quoting.</p>
+      </section>
+
+      <section class="card">
+        <div class="match">
+          <div>
+            <strong id="matchedModelTitle"></strong>
+            <p class="card-note" id="matchedModelDesc"></p>
+          </div>
+          <a id="matchedModelUrl" href="https://www.kalestruck.com/product-category/trailers/aluminum-tanker-trailer/?utm_source=chrome-extension&utm_medium=referral&utm_campaign=tanker" target="_blank" rel="noopener" class="btn-primary">View KALES specs ↗</a>
+        </div>
+        <nav class="catalog-links" aria-label="KALES tanker categories">
+          <a href="https://www.kalestruck.com/?utm_source=chrome-extension&utm_medium=referral&utm_campaign=tanker" target="_blank" rel="noopener">KALES Home</a>
+          <a href="https://www.kalestruck.com/product-category/trailers/liquid-powder-transport/?utm_source=chrome-extension&utm_medium=referral&utm_campaign=tanker" target="_blank" rel="noopener">Liquid &amp; Powder Transport</a>
+          <a href="https://www.kalestruck.com/product-category/trailers/fuel-tanker-trailer/?utm_source=chrome-extension&utm_medium=referral&utm_campaign=tanker" target="_blank" rel="noopener">Fuel Tanker</a>
+          <a href="https://www.kalestruck.com/product-category/trailers/aluminum-tanker-trailer/?utm_source=chrome-extension&utm_medium=referral&utm_campaign=tanker" target="_blank" rel="noopener">Aluminum Tanker</a>
+          <a href="https://www.kalestruck.com/product-category/trailers/stainless-steel-tanker-trailer/?utm_source=chrome-extension&utm_medium=referral&utm_campaign=tanker" target="_blank" rel="noopener">Stainless Steel Tanker</a>
+          <a href="https://www.kalestruck.com/product-category/trailers/chemical-tanker-trailers/?utm_source=chrome-extension&utm_medium=referral&utm_campaign=tanker" target="_blank" rel="noopener">Chemical Tanker</a>
+          <a href="https://www.kalestruck.com/product-category/trailers/cement-tanker-trailer/?utm_source=chrome-extension&utm_medium=referral&utm_campaign=tanker" target="_blank" rel="noopener">Bulk Cement Silo</a>
+        </nav>
+      </section>
+
+      <section class="card no-print">
+        <h2>Saved specs</h2>
+        <ul class="preset-list" id="savedPresetsList"></ul>
+      </section>
+    </main>
+  </div>
+  <script src="app.bundle.js"></script>
+</body>
+</html>
