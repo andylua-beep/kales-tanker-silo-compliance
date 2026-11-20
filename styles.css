@@ -1,0 +1,903 @@
+:root {
+  --bg: #eef1f2;
+  --panel: #ffffff;
+  --panel-alt: #f8f9f9;
+  --field: #ffffff;
+  --border: #bdc6ca;
+  --border-strong: #929da3;
+  --text: #111c25;
+  --muted: #59666e;
+  --faint: #69757c;
+  --navy: #13212c;
+  --header-navy: #0b1c2c;
+  --yellow: #f2ad27;
+  --yellow-hover: #f8c45d;
+  --yellow-border: #d49e00;
+  --accent: #9a6500;
+  --accent-strong: #13212c;
+  --ok: #2d6748;
+  --warn: #9a6500;
+  --permit: #5b439a;
+  --danger: #a4342b;
+  --info: #334651;
+  --cad-bg: #07151e;
+  --cad-grid: #152938;
+  --cad-ink: #f8fafc;
+  --cad-muted: #9fb0bc;
+  --cad-trailer: #f2ad27;
+  --cad-trailer-shade: #d99413;
+  --cad-trailer-edge: #9a6500;
+  --radius: 5px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "IBM Plex Sans", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.45;
+  font-size: 13px;
+}
+
+a {
+  color: var(--accent);
+}
+
+button,
+select,
+input {
+  font: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary,
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 12px;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn-primary {
+  background: var(--yellow);
+  color: var(--text);
+  border-color: var(--yellow-border);
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  background: var(--yellow-hover);
+}
+
+.btn-secondary {
+  background: var(--panel);
+  color: var(--text);
+}
+
+.studio-header .btn-secondary,
+.popup-header .btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.studio-header .btn-secondary:hover,
+.popup-header .btn-secondary:hover {
+  border-color: var(--yellow);
+  color: var(--yellow);
+}
+
+.btn-secondary:hover {
+  border-color: var(--navy);
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 4px;
+}
+
+.btn-link.danger {
+  color: var(--danger);
+}
+
+/* ---------- Fields ---------- */
+.field {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.field > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.field > span em {
+  font-style: normal;
+  color: var(--faint);
+}
+
+.row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.row-2 > * {
+  min-width: 0;
+}
+
+select,
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  background: var(--field);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 7px 9px;
+  border-radius: 6px;
+  font-size: 12.5px;
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"] {
+  border-color: var(--danger);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.hint {
+  display: block;
+  min-height: 15px;
+  margin-top: 3px;
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.hint.error {
+  color: var(--danger);
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--navy);
+  cursor: pointer;
+}
+
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.cat-tab-btn {
+  flex: 1 1 auto;
+  background: var(--panel-alt);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 8px;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+}
+
+.cat-tab-btn[aria-pressed="true"] {
+  background: var(--navy);
+  color: var(--yellow);
+  border-color: var(--navy);
+}
+
+.category-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: rgba(242, 173, 39, 0.22);
+  border: 1px solid rgba(212, 158, 0, 0.45);
+  border-radius: 4px;
+  padding: 3px 8px;
+  margin-bottom: 10px;
+}
+
+.chip-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.chip-btn {
+  background: var(--panel-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 7px 6px;
+  border-radius: var(--radius);
+  font-size: 12px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.chip-btn[aria-pressed="true"] {
+  background: var(--navy);
+  color: var(--yellow);
+  border-color: var(--navy);
+  font-weight: 700;
+}
+
+.is-hidden {
+  display: none !important;
+}
+
+/* ---------- Status ---------- */
+.status-pill,
+.verdict {
+  border-radius: var(--radius);
+  border: 1px solid;
+}
+
+.status-pill {
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.st-ok { --st: var(--ok); }
+.st-info { --st: var(--info); }
+.st-warn { --st: var(--warn); }
+.st-permit { --st: var(--permit); }
+.st-fail { --st: var(--danger); }
+
+.status-pill[class*="st-"],
+.verdict[class*="st-"] {
+  border-color: color-mix(in srgb, var(--st) 55%, transparent);
+  background: color-mix(in srgb, var(--st) 10%, white);
+}
+
+.status-pill[class*="st-"] {
+  color: var(--st);
+}
+
+.badge {
+  display: inline-block;
+  min-width: 58px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--st);
+  background: color-mix(in srgb, var(--st) 12%, white);
+  border: 1px solid color-mix(in srgb, var(--st) 45%, transparent);
+}
+
+/* ---------- Studio layout ---------- */
+.studio {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 14px;
+  display: grid;
+  grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
+  gap: 14px;
+}
+
+.studio-header {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--navy);
+  border-bottom: 3px solid var(--yellow);
+  background: var(--header-navy);
+  color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+.brand-kicker {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--yellow);
+  font-weight: 700;
+}
+
+.studio-header h1 {
+  font-size: 17px;
+}
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+}
+
+.card h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.card h2 .step {
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.card-note {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .studio {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+}
+
+/* ---------- Verdict & KPIs ---------- */
+.verdict {
+  padding: 12px 14px;
+  display: grid;
+  gap: 4px;
+}
+
+.verdict h2 {
+  font-size: 16px;
+  color: var(--st);
+}
+
+.verdict p {
+  font-size: 12.5px;
+  color: var(--text);
+}
+
+.verdict .verdict-meta {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+}
+
+.kpi {
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 10px 12px;
+}
+
+.kpi .title {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.kpi .val {
+  font-size: 20px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  margin: 2px 0;
+}
+
+.kpi .sub {
+  font-size: 12px;
+  color: var(--faint);
+}
+
+/* ---------- CAD stage ---------- */
+.svg-stage {
+  background: var(--cad-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.svg-stage svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.cad-bg { fill: var(--cad-bg); }
+.cad-grid { fill: none; stroke: var(--cad-grid); stroke-width: 0.8; }
+.cad-ground { stroke: #5b707c; stroke-width: 2; }
+.cad-title { fill: var(--cad-ink); font: 700 13px "IBM Plex Sans", Arial, sans-serif; letter-spacing: 0.03em; }
+.cad-small { fill: var(--cad-muted); font: 12px "IBM Plex Sans", Arial, sans-serif; }
+.cad-small.cg { fill: #f2ad27; font-weight: 600; }
+.cad-small[class*="st-"] { fill: color-mix(in srgb, var(--st) 65%, white); }
+
+/* trailer: KALES yellow, tractor: brand steel */
+.cad-trailer { fill: var(--cad-trailer); stroke: var(--cad-trailer-edge); stroke-width: 1.2; stroke-linejoin: round; }
+.cad-dolly-steel { fill: #c98a12; stroke: var(--cad-trailer-edge); stroke-width: 1.2; stroke-linejoin: round; }
+.cad-trailer-shade { fill: var(--cad-trailer-shade); stroke: var(--cad-trailer-edge); stroke-width: 1; }
+.cad-deckline { stroke: #ffe3a3; stroke-width: 1.2; opacity: 0.8; }
+.cad-lash { fill: none; stroke: var(--cad-trailer-edge); stroke-width: 1.2; }
+.cad-kingpin { fill: #1a242b; }
+.cad-leg { fill: #6d8591; stroke: #9fb0b9; stroke-width: 0.8; }
+.cad-leg-inner { fill: #c3cdd2; }
+.cad-joint-line { stroke: var(--cad-trailer-edge); stroke-width: 1; }
+.cad-post { fill: var(--cad-trailer-shade); stroke: var(--cad-trailer-edge); stroke-width: 1; }
+.cad-cab { fill: #334651; stroke: #7a909c; stroke-width: 1.4; stroke-linejoin: round; }
+.cad-glass { fill: rgba(159, 196, 214, 0.32); stroke: #9fc4d6; stroke-width: 1; }
+.cad-door { fill: none; stroke: #7a909c; stroke-width: 1; }
+.cad-grille { stroke: #9aaab3; stroke-width: 1.4; }
+.cad-bumper { fill: #4b5f6a; stroke: #7a909c; stroke-width: 1; }
+.cad-chassis { fill: #263640; stroke: #4b5f6a; stroke-width: 1; }
+.cad-tank { fill: #8a9aa3; stroke: #c3cdd2; stroke-width: 1; }
+.cad-exhaust { fill: #9aa6ad; }
+.cad-saddle { fill: #1a242b; stroke: #57656d; stroke-width: 1; }
+.cad-tyre { fill: #161d22; stroke: #34424a; stroke-width: 1.5; }
+.cad-rim { fill: #b9c3c8; stroke: #7d8a91; stroke-width: 1; }
+.cad-hub { fill: #57656d; }
+.cad-alert { fill: none; stroke: var(--st); stroke-width: 2; stroke-dasharray: 4 3; }
+
+/* structure details */
+.cad-neck { stroke: var(--cad-trailer-edge); stroke-width: 1.2; stroke-linejoin: round; }
+.cad-gusset { fill: #b97c0c; opacity: 0.55; }
+.cad-flange { stroke: #8a5c05; stroke-width: 2; opacity: 0.75; }
+.cad-stiffener { stroke: #a87008; stroke-width: 1; opacity: 0.7; }
+.cad-perf { stroke: #fff3d1; stroke-width: 2; stroke-dasharray: 2 4; opacity: 0.8; }
+.cad-truss-hole { fill: var(--cad-bg); stroke: var(--cad-trailer-edge); stroke-width: 1; }
+.cad-marker { fill: #ffb020; stroke: #7a4d00; stroke-width: 0.6; }
+.cad-lamp-red { fill: #ef4444; stroke: #7f1d1d; stroke-width: 0.6; }
+.cad-headlamp { fill: #f8fafc; stroke: #94a3b8; stroke-width: 0.6; }
+.cad-mirror { fill: #25343d; stroke: #7a909c; stroke-width: 1; }
+.cad-deflector { fill: #2b3a43; stroke: #7a909c; stroke-width: 1; stroke-linejoin: round; }
+.cad-tank-strap { stroke: #5b6b74; stroke-width: 2; }
+.cad-box { fill: #46555e; stroke: #9fb0b9; stroke-width: 1; }
+.cad-pin { fill: #1a242b; stroke: #c9d1d6; stroke-width: 1; }
+.cad-joint-gap { stroke: #1a242b; stroke-width: 2; }
+.cad-ram { stroke: #7d8a91; stroke-linecap: round; }
+.cad-ram-rod { stroke: #e6ebee; stroke-linecap: round; }
+.cad-ramp-stowed { stroke: #c98a12; stroke-linecap: round; }
+.cad-rung { fill: #8a5c05; }
+.cad-hanger { fill: #3a474f; stroke: #6d7d86; stroke-width: 0.8; }
+.cad-spring { fill: none; stroke: #55646d; stroke-width: 4; stroke-linecap: round; }
+.cad-airbag { fill: #2b363d; stroke: #6d7d86; stroke-width: 0.8; }
+.cad-tyre-wall { fill: none; stroke: #2e3a42; stroke-width: 1.5; }
+.cad-rim-hole { fill: #55636b; }
+
+/* cargo */
+.cad-car { stroke: #e8eef1; stroke-width: 1; stroke-linejoin: round; }
+.cad-car-a { fill: #9fb3bd; }
+.cad-car-b { fill: #c5ced3; }
+.cad-car-c { fill: #7f97a3; }
+.cad-car-glass { fill: rgba(15, 30, 45, 0.6); stroke: #dbe6eb; stroke-width: 0.8; stroke-linejoin: round; }
+.cad-car-line { stroke: rgba(15, 30, 45, 0.35); stroke-width: 1; }
+.cad-cargo { fill: #5d6d77; stroke: #a9b8c0; stroke-width: 1.3; }
+.cad-cargo-rib { stroke: #7c8d97; stroke-width: 1; }
+/* excavator (transport pose) */
+.excav-track { fill: #1f262b; stroke: #4a575f; stroke-width: 1.2; }
+.excav-shoes { fill: none; stroke: #6b7a83; stroke-width: 2; stroke-dasharray: 3 4; }
+.excav-track-frame { fill: #3a464e; }
+.excav-wheel { fill: #4b5961; stroke: #8a98a0; stroke-width: 1; }
+.excav-hub { fill: #22292e; }
+.excav-roller { fill: #57656d; stroke: #22292e; stroke-width: 1; }
+.excav-ring { fill: #2b363d; }
+.excav-house { fill: #8e9ca4; stroke: #c6d0d5; stroke-width: 1.2; }
+.excav-hood { fill: #7a8991; stroke: #c6d0d5; stroke-width: 1; }
+.excav-exhaust { fill: #3a464e; }
+.excav-counterweight { fill: #6c7a82; stroke: #c6d0d5; stroke-width: 1.2; }
+.excav-cab { fill: #9fadb5; stroke: #d4dde1; stroke-width: 1.2; stroke-linejoin: round; }
+.excav-glass { fill: rgba(56, 189, 248, 0.3); stroke: #bfe6f7; stroke-width: 1; }
+.excav-door { fill: none; stroke: #6c7a82; stroke-width: 1; }
+.excav-boom { fill: none; stroke: #6c7b84; stroke-linecap: round; stroke-linejoin: round; }
+.excav-boom-web { fill: none; stroke: #93a1a9; stroke-linecap: round; stroke-linejoin: round; opacity: 0.7; }
+.excav-cylinder { fill: none; stroke: #dfe5e8; stroke-linecap: round; }
+.excav-bucket { fill: #4b5961; stroke: #c6d0d5; stroke-width: 1.2; stroke-linejoin: round; }
+.excav-pin { fill: #22292e; stroke: #c6d0d5; stroke-width: 1; }
+.cad-cargo-label { fill: #fff; font: 700 13px "IBM Plex Sans", Arial, sans-serif; paint-order: stroke; stroke: rgba(0, 0, 0, 0.45); stroke-width: 3; }
+.cad-body { fill: rgba(242, 173, 39, 0.08); stroke: var(--cad-trailer); stroke-width: 2.5; stroke-linejoin: round; }
+.cad-toprail { stroke: var(--cad-trailer); stroke-width: 4; stroke-linecap: round; }
+.cad-rib { stroke: var(--cad-trailer-shade); stroke-width: 1.4; }
+.cad-bulk { fill: #8a6a3c; fill-opacity: 0.85; }
+.cad-cylinder { fill: #c9d1d6; stroke: #7d8a91; stroke-width: 1; }
+.cad-hinge { fill: #1a242b; stroke: #8a9aa3; }
+
+/* annotations */
+.cad-dim line { stroke: #9fb0b9; stroke-width: 1; }
+.cad-dim text { fill: #cbd5dc; font: 12px "IBM Plex Sans", Arial, sans-serif; paint-order: stroke; stroke: var(--cad-bg); stroke-width: 4; }
+.cad-dim.strong text { font-weight: 700; fill: var(--cad-ink); }
+.cad-arrow { fill: #9fb0b9; }
+.cad-ext { stroke: #9fb0b9; stroke-width: 0.8; stroke-dasharray: 2 3; opacity: 0.6; }
+.cad-load-name { fill: var(--cad-muted); font: 12px "IBM Plex Sans", Arial, sans-serif; }
+.cad-load { font: 700 13px "IBM Plex Sans", Arial, sans-serif; fill: var(--cad-ink); }
+.cad-load[class*="st-"] { fill: color-mix(in srgb, var(--st) 58%, white); }
+.cad-load.st-ok, .cad-load.st-info { fill: var(--cad-ink); }
+.cad-ramp { stroke: var(--cad-trailer); stroke-width: 3; stroke-dasharray: 7 5; stroke-linecap: round; opacity: 0.8; }
+.cad-cg { stroke: #fbbf24; stroke-width: 1.2; stroke-dasharray: 4 3; }
+.cad-cg-dot { fill: var(--cad-bg); stroke: #fbbf24; stroke-width: 2; }
+.cad-limit { stroke: var(--st); stroke-width: 1.2; stroke-dasharray: 8 5; }
+
+/* ---------- Checks table ---------- */
+.checks {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.checks caption {
+  text-align: left;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  padding: 10px 0 6px;
+}
+
+.checks th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--faint);
+  font-size: 12px;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.checks td {
+  padding: 7px 6px;
+  border-bottom: 1px solid color-mix(in srgb, var(--border) 60%, transparent);
+  vertical-align: top;
+}
+
+.checks td.num {
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.checks .note {
+  display: block;
+  color: var(--faint);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.util {
+  width: 90px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin-top: 5px;
+}
+
+.util > i {
+  display: block;
+  height: 100%;
+  background: var(--st);
+}
+
+@media (max-width: 640px) {
+  .checks .col-util {
+    display: none;
+  }
+}
+
+/* ---------- Region, catalog, presets ---------- */
+.region-notes {
+  margin: 6px 0 0 16px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.disclaimer {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--faint);
+}
+
+.catalog-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.catalog-links a {
+  font-size: 12px;
+  color: var(--text);
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.catalog-links a:hover {
+  border-color: var(--navy);
+  background: rgba(242, 173, 39, 0.16);
+  color: var(--navy);
+}
+
+.match {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.match strong {
+  color: var(--accent);
+}
+
+.card .btn-primary {
+  background: var(--navy);
+  color: #ffffff;
+  border-color: var(--navy);
+}
+
+.card .btn-primary:hover {
+  background: #1a2d3c;
+  color: var(--yellow);
+}
+
+.preset-list {
+  list-style: none;
+  font-size: 12px;
+}
+
+.preset-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---------- Popup ---------- */
+body.popup-mode {
+  width: 460px;
+  padding: 14px 16px;
+}
+
+.popup-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: var(--header-navy);
+  color: #ffffff;
+  margin: -14px -16px 2px;
+  padding: 12px 16px;
+  border-bottom: 3px solid var(--yellow);
+}
+
+.popup-header > div:first-child {
+  min-width: 0;
+  flex: 1;
+}
+
+.popup-header .brand-kicker {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 2px;
+}
+
+.popup-header h1 {
+  font-size: 15px;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.popup-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.popup-actions button {
+  white-space: nowrap;
+  padding: 6px 10px;
+  font-size: 12px;
+}
+
+#quickForm {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+body.popup-mode .field {
+  margin-bottom: 0;
+  min-width: 0;
+}
+
+body.popup-mode .field select,
+body.popup-mode .field input {
+  width: 100%;
+  min-width: 0;
+}
+
+.slider-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: var(--muted);
+}
+
+.slider-top strong {
+  color: var(--accent);
+}
+
+.mini-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.mini-kpi {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.mini-kpi span {
+  display: block;
+  font-size: 11px;
+  line-height: 1.25;
+  color: var(--muted);
+}
+
+.mini-kpi strong {
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.popup-footer {
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.popup-footer a {
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.popup-footer a:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.muted-link {
+  color: var(--muted) !important;
+  font-weight: 400 !important;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* ---------- Print spec sheet ---------- */
+@media print {
+  :root {
+    --bg: #fff;
+    --panel: #fff;
+    --panel-alt: #fff;
+    --text: #0f172a;
+    --muted: #334155;
+    --faint: #475569;
+    --border: #cbd5e1;
+    --cad-bg: #fff;
+    --cad-grid: #e2e8f0;
+    --cad-ink: #0f172a;
+  }
+  .studio {
+    grid-template-columns: 1fr;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .card,
+  .kpi,
+  .svg-stage {
+    break-inside: avoid;
+  }
+}
+
+/* ---------- Tanker & Silo CAD additions ---------- */
+.cad-tank-shell { stroke: #94a3b8; stroke-width: 1.5; }
+.cad-liquid { fill: rgba(56, 189, 248, 0.28); stroke: rgba(56, 189, 248, 0.65); stroke-width: 0.9; }
+.cad-bulkhead { stroke: #38bdf8; stroke-width: 1.3; stroke-dasharray: 4 3; }
+.cad-rail { stroke: #cbd5e1; stroke-width: 1.4; stroke-linecap: round; }
+.cad-dome { fill: #334155; stroke: #cbd5e1; stroke-width: 1.1; }
+.cad-guard { fill: #475569; stroke: #94a3b8; stroke-width: 0.9; }
+.cad-api-box { fill: #0f172a; stroke: #f2ad27; stroke-width: 1.2; }
+.cad-engine-box { fill: #1e293b; stroke: #94a3b8; stroke-width: 1.2; }
+.cad-pipe { stroke: #cbd5e1; stroke-width: 3; stroke-linecap: round; }
+.cad-valve { fill: #f2ad27; stroke: #9a6500; stroke-width: 1; }
+.cad-seam { stroke: #cbd5e1; stroke-width: 0.8; opacity: 0.35; }
+.cad-ridge { fill: none; stroke: #e2e8f0; stroke-width: 1; stroke-dasharray: 5 3; stroke-linejoin: round; opacity: 0.5; }
+.cad-shine { stroke: #f8fafc; stroke-width: 2; stroke-linecap: round; opacity: 0.22; }
+.cad-strut { stroke: #c98a12; stroke-width: 3.2; stroke-linecap: round; }
+.cad-cradle { fill: #3a474f; stroke: #6d7d86; stroke-width: 0.9; stroke-linejoin: round; }
+.cad-airline { fill: none; stroke: #94a3b8; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.cad-discharge { fill: #cbd5e1; stroke: #64748b; stroke-width: 0.9; }
+.cad-fin { stroke: #64748b; stroke-width: 0.8; }
+.cad-belt { stroke: #0f172a; stroke-width: 1.6; }
